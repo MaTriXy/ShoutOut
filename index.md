@@ -1,4 +1,4 @@
- ### Specs
+### Specs
  
 [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Ashoutout/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Ashoutout/_latestVersion) [![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9)
 
