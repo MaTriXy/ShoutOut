@@ -1,5 +1,8 @@
-### Specs
+ ### Specs
 [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Ashoutout/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Ashoutout/_latestVersion) [![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9)
+
+### Badges/Featured In
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ShoutOut-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4955#)
 
 ### Show some :heart:
 [![GitHub stars](https://img.shields.io/github/stars/nisrulz/ShoutOut.svg?style=social&label=Star)](https://github.com/nisrulz/ShoutOut) [![GitHub forks](https://img.shields.io/github/forks/nisrulz/ShoutOut.svg?style=social&label=Fork)](https://github.com/nisrulz/ShoutOut/fork) [![GitHub watchers](https://img.shields.io/github/watchers/nisrulz/ShoutOut.svg?style=social&label=Watch)](https://github.com/nisrulz/ShoutOut) [![GitHub followers](https://img.shields.io/github/followers/nisrulz.svg?style=social&label=Follow)](https://github.com/nisrulz/ShoutOut)  
@@ -7,8 +10,6 @@
 
 
 Android wrapper for logging information.
-
-> I used to copy-paste this logger class in all my projects so decided to use it like a library. Star it if you find it useful.
 
 # Including in your project
 ShoutOut is available in the Jcenter, so getting it as simple as adding it as a dependency
@@ -18,22 +19,32 @@ compile 'com.github.nisrulz:shoutout:{latest version}'
 where `{latest version}` corresponds to published version in [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Ashoutout/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Ashoutout/_latestVersion)
 
 #Usage
-+ First init shoutout, probably in your application class
++ First create and init shoutout;
 ```java
+    ShoutOut shoutOut;
     // Init the ShoutOut Lib
-    ShoutOut.init(getClass().getSimpleName(), true);
-```
+    shoutOut = ShoutOut.withTag(debuggable, TAG);
 
-where the params are _**TAG**_ and _**debuggable**_ flag
+    // or you can also init as below to specify a priority
+    shoutOut = ShoutOut.withTagAndPriority(debuggable,TAG, priority);
+```
+where `priority` can be `Log.DEBUG`, `Log.ERROR`, `Log.ASSERT`, `Log.WTF` or `Log.INFO`
 
 + Now log data as below
 ```java
     // Debug Logs
-    ShoutOut.log("This is Debug information here in LOGCAT");
+    shoutOut.log("This is Debug information here in LOGCAT");
 
     // Error Logs
-    ShoutOut.log("This is Error information here in LOGCAT",exception));
+    shoutOut.withCause(new RuntimeException("Hello! I am Runtime exception"));
 ```
+
++ You can chain an extra debug log to exception log
+```java
+  shoutOut.log("This is Debug information here that is chained for adding a message to exception stacktrace in LOGCAT")
+          .withCause(new RuntimeException("Hello! I am Runtime exception"));
+
+``` 
 
 
 # Pull Requests
@@ -47,6 +58,10 @@ I welcome and encourage all pull requests. It usually will take me within 24-48 
 
 ### Created & Maintained By
 [Nishant Srivastava](https://github.com/nisrulz) ([@nisrulz](https://www.twitter.com/nisrulz))
+
+> If you found this library helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>
+> <a href='https://ko-fi.com/A443EQ6' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=f' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 
 License
